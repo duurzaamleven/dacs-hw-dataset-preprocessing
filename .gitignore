@@ -1,0 +1,18 @@
+# De ruwe dataset en alles wat eruit volgt blijft buiten versiebeheer.
+# Geen licentienaam genoemd door de data-eigenaren; ze geven geen recht de dataset zelf te
+# herpubliceren. Zie GEBRUIKSVOORWAARDEN.md.
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Lokale e-mailconcepten en notities
+*mail*.*
+*.notitie.*
+
+# Claude Code
+.claude/
