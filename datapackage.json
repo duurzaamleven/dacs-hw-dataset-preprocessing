@@ -1,0 +1,520 @@
+{
+  "name": "dacs-hw-processed",
+  "title": "DACS-HW: voorbewerkte meetdata (getypeerde Parquet-tabellen)",
+  "description": "Voorbewerkte meetdata van DACS-HW (Digitale Aggregatie en Collectieve Sturing van Hybride Warmtepompen, MOOI322001). Deze repo is niet de data-eigenaar; zie GEBRUIKSVOORWAARDEN.md voor licentie, meldplicht en herkomst van de twee archieven, en docs/datacatalogus.md voor de volledige beschrijving van elke tabel. Gegenereerd door dacs_hw_preprocessing.datapackage, niet met de hand bijgehouden.",
+  "version": "2026-09-24-eerste-opzet",
+  "licenses": [
+    {
+      "name": "andere",
+      "title": "Geen open licentie: geen van beide data-eigenaren (Projectgroep DACS-HW/Inversable voor de woningdata, Enexis voor de onderstationdata) noemt een licentienaam. Gebruik is toegestaan voor onderzoek en analyse met een maatschappelijk doel, met een meldplicht (woningdata) respectievelijk een downloadformulier met doel en inzicht (Enexis-data). Herverspreiding van de ruwe dataset is niet toegestaan. Zie GEBRUIKSVOORWAARDEN.md in deze repo.",
+      "path": "GEBRUIKSVOORWAARDEN.md"
+    }
+  ],
+  "sources": [
+    {
+      "title": "DACS-HW, KITE-projectpagina (Kennis- en Dataplatform Individuele Technieken)",
+      "path": "https://kennisdelen.rvo.nl/"
+    },
+    {
+      "title": "dataset-dacs-hw.zip (woningdata: warmtepompen en slimme meters)",
+      "path": "https://data.inversable.cloud/dacs-hw/dataset-dacs-hw.zip",
+      "sha256": "f251e66129f3eae25490d799f2e0cf7dae2290adcd7527476c05fb28aefc2bcf",
+      "bytes": 2140045
+    },
+    {
+      "title": "wijktrafo_15min.zip (Enexis-onderstationdata; alleen via downloadformulier te verkrijgen, geen vaste URL, zie GEBRUIKSVOORWAARDEN.md)",
+      "sha256": "23b1d080d57f5fbb950f82885a8455826a1e5a134989dae4a32184785ef87c93",
+      "bytes": 1991982
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Projectgroep DACS-HW (Inversable, Voorstroom, Samen Energie Neutraal, Enablemi, Intergas, TU/e)",
+      "role": "author"
+    },
+    {
+      "title": "Enexis",
+      "role": "author",
+      "organization": "Enexis"
+    },
+    {
+      "title": "Milieu Centraal",
+      "role": "processor"
+    }
+  ],
+  "resources": [
+    {
+      "name": "heatpump_15m",
+      "title": "15-minutenaggregaat over warmtepompsystemen (energie, temperatuur)",
+      "format": "parquet",
+      "path": "heatpump_15m.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "tijdstip_start",
+            "type": "datetime",
+            "description": "Begin van het kwartierinterval [tijdstip_start, tijdstip_start + 15 min), tz-aware Europe/Amsterdam (bron: UTC, verliesvrij omgezet).",
+            "format": "default"
+          },
+          {
+            "name": "n_wp_online",
+            "type": "integer",
+            "description": "Aantal warmtepompsystemen dat in dit kwartier minstens één metriek meldde."
+          },
+          {
+            "name": "n_wp_ketel",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige ketel-warmtewaarde leverde in dit kwartier."
+          },
+          {
+            "name": "n_wp_warmtepomp",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige warmtepomp-warmtewaarde leverde."
+          },
+          {
+            "name": "n_wp_elektriciteit",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige elektriciteitswaarde leverde."
+          },
+          {
+            "name": "n_wp_temp_binnen",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige binnentemperatuur leverde."
+          },
+          {
+            "name": "n_wp_setpoint",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldig setpoint leverde."
+          },
+          {
+            "name": "n_wp_temp_retour",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige inlet-temperatuur (retour) leverde."
+          },
+          {
+            "name": "n_wp_temp_aanvoer",
+            "type": "integer",
+            "description": "Aantal systemen dat een geldige outlet-temperatuur (aanvoer) leverde."
+          },
+          {
+            "name": "q_ketel_gem__kWh",
+            "type": "number",
+            "description": "Gemiddelde door de ketel geleverde warmte per bijdragend systeem (geen gasvolume)."
+          },
+          {
+            "name": "q_ketel_med__kWh",
+            "type": "number",
+            "description": "Mediane door de ketel geleverde warmte per bijdragend systeem."
+          },
+          {
+            "name": "q_ketel_q25__kWh",
+            "type": "number",
+            "description": "Onderkwartiel van de door de ketel geleverde warmte."
+          },
+          {
+            "name": "q_ketel_q75__kWh",
+            "type": "number",
+            "description": "Bovenkwartiel van de door de ketel geleverde warmte."
+          },
+          {
+            "name": "q_warmtepomp_gem__kWh",
+            "type": "number",
+            "description": "Gemiddelde door de warmtepomp (elektrisch) geleverde warmte."
+          },
+          {
+            "name": "q_warmtepomp_med__kWh",
+            "type": "number",
+            "description": "Mediane door de warmtepomp geleverde warmte."
+          },
+          {
+            "name": "q_warmtepomp_q25__kWh",
+            "type": "number",
+            "description": "Onderkwartiel van de door de warmtepomp geleverde warmte."
+          },
+          {
+            "name": "q_warmtepomp_q75__kWh",
+            "type": "number",
+            "description": "Bovenkwartiel van de door de warmtepomp geleverde warmte."
+          },
+          {
+            "name": "e_warmtepomp_gem__kWh",
+            "type": "number",
+            "description": "Gemiddeld elektrisch verbruik van de warmtepompsystemen in dit kwartier."
+          },
+          {
+            "name": "e_warmtepomp_med__kWh",
+            "type": "number",
+            "description": "Mediaan elektrisch verbruik."
+          },
+          {
+            "name": "e_warmtepomp_q25__kWh",
+            "type": "number",
+            "description": "Onderkwartiel elektrisch verbruik."
+          },
+          {
+            "name": "e_warmtepomp_q75__kWh",
+            "type": "number",
+            "description": "Bovenkwartiel elektrisch verbruik."
+          },
+          {
+            "name": "temp_binnen_gem__degC",
+            "type": "number",
+            "description": "Gemiddelde gemeten binnentemperatuur."
+          },
+          {
+            "name": "temp_binnen_med__degC",
+            "type": "number",
+            "description": "Mediane gemeten binnentemperatuur."
+          },
+          {
+            "name": "temp_binnen_q25__degC",
+            "type": "number",
+            "description": "Onderkwartiel binnentemperatuur."
+          },
+          {
+            "name": "temp_binnen_q75__degC",
+            "type": "number",
+            "description": "Bovenkwartiel binnentemperatuur."
+          },
+          {
+            "name": "temp_setpoint_gem__degC",
+            "type": "number",
+            "description": "Gemiddelde ingestelde (gewenste) temperatuur."
+          },
+          {
+            "name": "temp_setpoint_med__degC",
+            "type": "number",
+            "description": "Mediane ingestelde temperatuur."
+          },
+          {
+            "name": "temp_setpoint_q25__degC",
+            "type": "number",
+            "description": "Onderkwartiel ingestelde temperatuur."
+          },
+          {
+            "name": "temp_setpoint_q75__degC",
+            "type": "number",
+            "description": "Bovenkwartiel ingestelde temperatuur."
+          },
+          {
+            "name": "temp_setpoint_std__degC",
+            "type": "number",
+            "description": "Standaarddeviatie van de ingestelde temperatuur over de bijdragende systemen."
+          },
+          {
+            "name": "temp_retour_gem__degC",
+            "type": "number",
+            "description": "Gemiddelde retourtemperatuur (bron: inlet_water_temperature; interpretatie, zie ontwerp §5)."
+          },
+          {
+            "name": "temp_retour_med__degC",
+            "type": "number",
+            "description": "Mediane retourtemperatuur."
+          },
+          {
+            "name": "temp_retour_q25__degC",
+            "type": "number",
+            "description": "Onderkwartiel retourtemperatuur."
+          },
+          {
+            "name": "temp_retour_q75__degC",
+            "type": "number",
+            "description": "Bovenkwartiel retourtemperatuur."
+          },
+          {
+            "name": "temp_aanvoer_gem__degC",
+            "type": "number",
+            "description": "Gemiddelde aanvoertemperatuur (bron: outlet_water_temperature; interpretatie, zie ontwerp §5)."
+          },
+          {
+            "name": "temp_aanvoer_med__degC",
+            "type": "number",
+            "description": "Mediane aanvoertemperatuur."
+          },
+          {
+            "name": "temp_aanvoer_q25__degC",
+            "type": "number",
+            "description": "Onderkwartiel aanvoertemperatuur."
+          },
+          {
+            "name": "temp_aanvoer_q75__degC",
+            "type": "number",
+            "description": "Bovenkwartiel aanvoertemperatuur."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "tijdstip_start"
+        ]
+      }
+    },
+    {
+      "name": "heatpump_steering_15m",
+      "title": "Kwartieren met minstens twee aangestuurde warmtepompen",
+      "format": "parquet",
+      "path": "heatpump_steering_15m.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "tijdstip_start",
+            "type": "datetime",
+            "description": "Begin van het kwartierinterval, tz-aware Europe/Amsterdam. Alleen kwartieren met minstens twee gestuurde warmtepompen staan in deze tabel.",
+            "format": "default"
+          },
+          {
+            "name": "n_wp_gestuurd",
+            "type": "integer",
+            "description": "Aantal distincte warmtepompen dat in dit kwartier werd aangestuurd."
+          },
+          {
+            "name": "p_limiet_gem__W",
+            "type": "number",
+            "description": "Gemiddeld opgelegd vermogenslimiet over de gestuurde warmtepompen (bron in kW, x1000)."
+          },
+          {
+            "name": "p_limiet_med__W",
+            "type": "number",
+            "description": "Mediaan opgelegd vermogenslimiet."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "tijdstip_start"
+        ]
+      }
+    },
+    {
+      "name": "smartmeters_gas_hourly",
+      "title": "Uuraggregaat gasgebruik over slimme meters",
+      "format": "parquet",
+      "path": "smartmeters_gas_hourly.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "tijdstip_start",
+            "type": "datetime",
+            "description": "Begin van het uurinterval, tz-aware Europe/Amsterdam.",
+            "format": "default"
+          },
+          {
+            "name": "n_meter_gas",
+            "type": "integer",
+            "description": "Aantal slimme meters dat een geldige gaswaarde leverde in dit uur."
+          },
+          {
+            "name": "g_gebruik_gem__m3",
+            "type": "number",
+            "description": "Gemiddeld gasgebruik per bijdragende meter."
+          },
+          {
+            "name": "g_gebruik_med__m3",
+            "type": "number",
+            "description": "Mediaan gasgebruik."
+          },
+          {
+            "name": "g_gebruik_q25__m3",
+            "type": "number",
+            "description": "Onderkwartiel gasgebruik."
+          },
+          {
+            "name": "g_gebruik_q75__m3",
+            "type": "number",
+            "description": "Bovenkwartiel gasgebruik."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "tijdstip_start"
+        ]
+      }
+    },
+    {
+      "name": "household_monthly",
+      "title": "Maandtotalen elektriciteit en gas per (gepseudonimiseerde) woning",
+      "format": "parquet",
+      "path": "household_monthly.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "maand_start",
+            "type": "datetime",
+            "description": "Kalendermaand (Europe/Amsterdam-label), GEEN tz-aware instant; zie tijd.py.",
+            "format": "default"
+          },
+          {
+            "name": "custom_id__str",
+            "type": "string",
+            "description": "Gepseudonimiseerde woningsleutel, stabiel binnen deze dataset; NIET koppelbaar aan de kwartierbestanden."
+          },
+          {
+            "name": "e_geleverd_tot__kWh",
+            "type": "number",
+            "description": "Totaal aan het net onttrokken elektriciteit in deze maand."
+          },
+          {
+            "name": "e_teruglevering_tot__kWh",
+            "type": "number",
+            "description": "Totaal aan het net teruggeleverde elektriciteit in deze maand."
+          },
+          {
+            "name": "e_net_tot__kWh",
+            "type": "number",
+            "description": "Netto elektriciteitsverbruik (geleverd min teruglevering) in deze maand."
+          },
+          {
+            "name": "g_geleverd_tot__m3",
+            "type": "number",
+            "description": "Totaal geleverd gasvolume in deze maand."
+          },
+          {
+            "name": "e_warmtepomp_tot__kWh",
+            "type": "number",
+            "description": "Elektriciteitsverbruik van het warmtepompsysteem in deze maand (bron: hp_electricity_kwh)."
+          },
+          {
+            "name": "g_warmtepomp_tot__m3",
+            "type": "number",
+            "description": "Gasgebruik gerapporteerd door het hybride warmtepompsysteem in deze maand (bron: hp_gas_m3)."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "maand_start",
+          "custom_id__str"
+        ]
+      }
+    },
+    {
+      "name": "wijktrafo_15min",
+      "title": "Stroom, spanning en belasting van de wijktransformator in Dalen",
+      "format": "parquet",
+      "path": "wijktrafo_15min.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "tijdstip_start",
+            "type": "datetime",
+            "description": "Begin van het kwartierinterval, tz-aware Europe/Amsterdam. Bron is eind-gelabeld en is bij het inlezen één kwartier teruggeschoven (ontwerp §4.1).",
+            "format": "default"
+          },
+          {
+            "name": "i_trafo_L1__A",
+            "type": "number",
+            "description": "Stroom op fase L1 van de wijktransformator."
+          },
+          {
+            "name": "i_trafo_L2__A",
+            "type": "number",
+            "description": "Stroom op fase L2."
+          },
+          {
+            "name": "i_trafo_L3__A",
+            "type": "number",
+            "description": "Stroom op fase L3."
+          },
+          {
+            "name": "u_trafo_L1__V",
+            "type": "number",
+            "description": "Spanning op fase L1."
+          },
+          {
+            "name": "u_trafo_L2__V",
+            "type": "number",
+            "description": "Spanning op fase L2."
+          },
+          {
+            "name": "u_trafo_L3__V",
+            "type": "number",
+            "description": "Spanning op fase L3."
+          },
+          {
+            "name": "p_trafo_L1__W",
+            "type": "number",
+            "description": "Belasting op fase L1 (bron in kW, x1000). Let op: stroom x spanning is NIET gelijk aan belasting, zie ontwerp §4.2."
+          },
+          {
+            "name": "p_trafo_L2__W",
+            "type": "number",
+            "description": "Belasting op fase L2."
+          },
+          {
+            "name": "p_trafo_L3__W",
+            "type": "number",
+            "description": "Belasting op fase L3."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "tijdstip_start"
+        ]
+      }
+    },
+    {
+      "name": "metadata",
+      "title": "Kolomdefinities uit de bron zelf, ongewijzigd",
+      "format": "parquet",
+      "path": "metadata.parquet",
+      "schema": {
+        "fields": [
+          {
+            "name": "field",
+            "type": "string",
+            "description": "Veldnaam zoals gedocumenteerd door de bron; komt voor meerdere brontabellen dezelfde naam voor (bijvoorbeeld interval_start), dus dit veld alleen is GEEN sleutel."
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "description": "Beschrijving van het veld, letterlijk overgenomen."
+          },
+          {
+            "name": "file",
+            "type": "string",
+            "description": "Brontabel waar dit veld bij hoort, letterlijk overgenomen (bevat twee niet-bestaande bestandsnamen, zie ontwerp §7)."
+          },
+          {
+            "name": "unit_name",
+            "type": "string",
+            "description": "Eenheidsnaam, letterlijk overgenomen."
+          },
+          {
+            "name": "unit_symbol",
+            "type": "string",
+            "description": "Eenheidssymbool, letterlijk overgenomen."
+          },
+          {
+            "name": "resolution",
+            "type": "string",
+            "description": "Tijdresolutie, letterlijk overgenomen."
+          },
+          {
+            "name": "decimals",
+            "type": "string",
+            "description": "Aantal decimalen, letterlijk overgenomen."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "description": "Toelichting, letterlijk overgenomen."
+          }
+        ],
+        "missingValues": [
+          ""
+        ],
+        "primaryKey": [
+          "field",
+          "file"
+        ]
+      }
+    }
+  ]
+}
