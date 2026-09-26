@@ -62,7 +62,11 @@ def run(
     uit_dir: str | Path = "data/processed",
     docs_dir: str | Path | None = "docs",
     droogloop: bool = False,
+    datapackage_pad: str | Path | None = datapackage_mod.STANDAARD_DATAPACKAGE_PAD,
 ) -> dict:
+    """Bouw alle uitvoer. ``datapackage_pad`` is waar datapackage.json komt (standaard de
+    repo-root); ``None`` slaat het over. Tests geven ``None`` of een pad in ``tmp_path`` mee, zodat
+    een testrun nooit de echte datapackage.json van deze repo overschrijft."""
     raw_dir = Path(raw_dir)
     uit_dir = Path(uit_dir)
     dataset_zip = raw_dir / "dataset-dacs-hw.zip"
@@ -96,11 +100,11 @@ def run(
     if docs_dir is not None:
         kwaliteitsrapport.schrijf_rapport(uit_dir, Path(docs_dir) / "data-quality.md", toets_resultaat)
 
-    # datapackage.json komt in de repo-root te staan, naast README/GEBRUIKSVOORWAARDEN.md, net als
-    # in de WarmingUP-preprocessing; zie datapackage.py voor het standaardpad.
-    datapackage_pad = Path(__file__).resolve().parents[2] / datapackage_mod.DATAPACKAGE_BESTANDSNAAM
-    datapackage_mod.schrijf_datapackage(datapackage_pad, UITVOER_CONTRACT_VERSIE)
-    resultaten["datapackage"] = str(datapackage_pad)
+    # datapackage.json komt standaard in de repo-root te staan, naast README/GEBRUIKSVOORWAARDEN.md,
+    # net als in de WarmingUP-preprocessing; zie datapackage.py voor het standaardpad.
+    if datapackage_pad is not None:
+        datapackage_mod.schrijf_datapackage(Path(datapackage_pad), UITVOER_CONTRACT_VERSIE)
+        resultaten["datapackage"] = str(datapackage_pad)
 
     resultaten["duur__s"] = time.monotonic() - start
     log.info("Klaar in %.2f s", resultaten["duur__s"])
@@ -136,6 +140,10 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--uit", "--out-dir", dest="uit", type=Path, default=Path("data/processed"))
     p.add_argument("--docs-dir", type=Path, default=Path("docs"))
     p.add_argument("--droogloop", action="store_true", help="Toon wat er zou gebeuren; schrijf niets")
+    p.add_argument(
+        "--datapackage-pad", type=Path, default=datapackage_mod.STANDAARD_DATAPACKAGE_PAD,
+        help="Waar datapackage.json geschreven wordt (standaard: de repo-root).",
+    )
     p.add_argument("-v", "--verbose", action="store_true")
     return p.parse_args()
 
@@ -147,7 +155,10 @@ def main() -> None:
         format="%(asctime)s %(levelname)s %(name)s: %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
     )
-    resultaten = run(args.raw_dir, args.uit, docs_dir=args.docs_dir, droogloop=args.droogloop)
+    resultaten = run(
+        args.raw_dir, args.uit, docs_dir=args.docs_dir, droogloop=args.droogloop,
+        datapackage_pad=args.datapackage_pad,
+    )
     if not resultaten.get("droogloop"):
         for k, v in resultaten.items():
             print(f"{k}: {v}")

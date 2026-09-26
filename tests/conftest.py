@@ -4,6 +4,7 @@ synthetische data. Geen netwerk, geen afhankelijkheid van de echte DACS-HW-data.
 
 from __future__ import annotations
 
+import hashlib
 import zipfile
 from pathlib import Path
 
@@ -11,6 +12,28 @@ import pandas as pd
 import pytest
 
 from dacs_hw_preprocessing import kolommen
+from dacs_hw_preprocessing.datapackage import STANDAARD_DATAPACKAGE_PAD
+
+
+def _vingerafdruk(pad: Path) -> tuple[str, int] | None:
+    """sha256 en mtime van ``pad``, of None als het bestand niet bestaat. De mtime telt mee omdat
+    de pijplijn byte-identieke inhoud kan herschrijven; ook dat mag een test niet doen."""
+    if not pad.exists():
+        return None
+    return hashlib.sha256(pad.read_bytes()).hexdigest(), pad.stat().st_mtime_ns
+
+
+@pytest.fixture(scope="session", autouse=True)
+def echte_datapackage_blijft_onaangeroerd():
+    """Faalt als een testrun de echte datapackage.json in de repo-root aanraakt: de pijplijn
+    schrijft daar standaard naartoe, dus elke test moet ``datapackage_pad`` expliciet zetten."""
+    voor = _vingerafdruk(STANDAARD_DATAPACKAGE_PAD)
+    yield
+    na = _vingerafdruk(STANDAARD_DATAPACKAGE_PAD)
+    assert voor == na, (
+        f"Een test heeft {STANDAARD_DATAPACKAGE_PAD} gewijzigd; geef pijplijn.run een "
+        "datapackage_pad in tmp_path of None mee."
+    )
 
 
 def _kolom_fixture(kolommen_dict: dict[str, str], n: int, overrides: dict[str, list]) -> pd.DataFrame:
