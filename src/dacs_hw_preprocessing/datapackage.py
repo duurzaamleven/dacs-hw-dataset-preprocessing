@@ -26,6 +26,8 @@ from . import tabellen
 from .manifest import UITVOER_CONTRACT_VERSIE
 
 DATAPACKAGE_BESTANDSNAAM = "datapackage.json"
+#: Standaardplek van datapackage.json: de repo-root, naast README en GEBRUIKSVOORWAARDEN.md.
+STANDAARD_DATAPACKAGE_PAD = Path(__file__).resolve().parents[2] / DATAPACKAGE_BESTANDSNAAM
 
 KITE_PAGINA_URL = "https://kennisdelen.rvo.nl/"  # community "Kennis- en Dataplatform Individuele Technieken", projectpagina DACS-HW
 WONINGDATA_URL = "https://data.inversable.cloud/dacs-hw/dataset-dacs-hw.zip"
@@ -263,7 +265,7 @@ def schrijf_datapackage(pad: Path, contract_versie: str = UITVOER_CONTRACT_VERSI
 def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument(
-        "--pad", type=Path, default=Path(__file__).resolve().parents[2] / DATAPACKAGE_BESTANDSNAAM,
+        "--pad", type=Path, default=STANDAARD_DATAPACKAGE_PAD,
         help="Waar datapackage.json geschreven wordt (standaard: de repo-root).",
     )
     return p.parse_args()
