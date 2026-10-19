@@ -8,7 +8,10 @@ version = "0.1.0"
 description = "Preprocessing van de DACS-HW-dataset (Digitale Aggregatie en Collectieve Sturing van Hybride Warmtepompen) naar getypeerde, herleidbare Parquet-tabellen."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE.md" }
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+]
 dependencies = [
     "pandas>=2.2,<4",
     "numpy>=1.26,<3",

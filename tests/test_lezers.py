@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Tests voor `lezers.py`: kolomvertaling, typen, en de kwartierverschuiving (ontwerp §3, §4.1)."""
 
 from __future__ import annotations

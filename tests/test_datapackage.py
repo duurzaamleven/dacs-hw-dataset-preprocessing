@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """datapackage.json wordt UIT DE CODE gebouwd (datapackage.py); deze test bewaakt dat het niet uit
 de pas kan lopen met de Parquet-schema's die de code zelf gebruikt: elk veld in een schema moet in
 het bijbehorende datapackage-resource staan, en omgekeerd."""

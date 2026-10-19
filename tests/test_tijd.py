@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Tests voor `tijd.py`: UTC-parsing, de weergavezone-omzetting, en het kalenderlabel."""
 
 from __future__ import annotations

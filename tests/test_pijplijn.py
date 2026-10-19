@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """End-to-end tests voor `pijplijn.py`, op de synthetische fixtures uit conftest.py."""
 
 from __future__ import annotations

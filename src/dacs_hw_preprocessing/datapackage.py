@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Bouwt ``datapackage.json`` (Frictionless Data Package v1, met een Table Schema per resource) UIT
 DE CODE, niet met de hand bijgehouden.
 

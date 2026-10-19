@@ -74,9 +74,30 @@ bijgehouden; regenereren kan met `python -m dacs_hw_preprocessing.datapackage`.
 
 | document | waarover |
 |---|---|
-| [`GEBRUIKSVOORWAARDEN.md`](GEBRUIKSVOORWAARDEN.md) | de licentie, de meldplicht, en hoe je de datasets zelf verkrijgt |
+| [`GEBRUIKSVOORWAARDEN.md`](GEBRUIKSVOORWAARDEN.md) | de voorwaarden van de datasets, de meldplicht, en hoe je de datasets zelf verkrijgt |
+| [`LICENSE`](LICENSE) | de licentie van de **code**: EUPL-1.2 |
 | [`ontwerp-preprocessing.md`](ontwerp-preprocessing.md) | wat deze pijplijn doet, de kolomvertaling, en de keuzes |
 | [`docs/datacatalogus.md`](docs/datacatalogus.md) | metadatabeschrijving van de uitvoer voor een datacatalogus: tabellen, kolommen, kwaliteit, hoe te laden |
 | `docs/data-quality.md` | gegenereerd kwaliteitsrapport, door de pijplijn zelf geschreven |
 | `datapackage.json` | machineleesbare Frictionless Data Package-beschrijving, door de pijplijn zelf gegenereerd |
 | [`VOORTGANG.md`](VOORTGANG.md) | bouwstatus van de repo zelf: wat af is, wat volgt, open vragen |
+
+## Licentie
+
+De **code** in deze repository valt onder de European Union Public Licence 1.2 (`EUPL-1.2`), zie
+[`LICENSE`](LICENSE). Copyright © 2026 Kenniscentrum Duurzaam Leven, Stichting Milieu Centraal.
+Besloten op 19-10-2026.
+
+De **data** valt daar niet onder. De twee datasets die deze code verwerkt, hebben elk een eigen
+data-eigenaar en een eigen voorwaarde (zie [`GEBRUIKSVOORWAARDEN.md`](GEBRUIKSVOORWAARDEN.md)):
+
+- de **woningdata** (Projectgroep DACS-HW, aanspreekpunt Inversable): gebruik melden bij
+  data@inversable.com, en uitkomsten, resultaten en analyses onder dezelfde gebruiksvoorwaarden
+  delen met de KITE-community;
+- de **Enexis-onderstationdata** (Enexis): beschikbaar voor onderzoek en analyse met een
+  maatschappelijk doel, via een eigen aanvraagprocedure met een downloadformulier.
+
+Geen van beide vraagt dat de rekenmethode openbaar wordt onder eenzelfde licentie; wel dat
+resultaten met de KITE-community gedeeld worden. De verdeling is dus: de code onder `EUPL-1.2`, de
+inzichten en resultaten onder de voorwaarden van de datasets. De ruwe data staat niet in deze
+repository en wordt er ook niet via verspreid.

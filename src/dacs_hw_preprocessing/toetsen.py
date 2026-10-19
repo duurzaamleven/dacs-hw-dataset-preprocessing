@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """De inlet/outlet-toets (ontwerp-preprocessing.md §5): een losse functie, geen onderdeel van de
 kolomvertaling zelf.
 
