@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Tijdzones (ontwerp-preprocessing.md §3, §4.1).
 
 **Intern UTC, in de uitvoer Europe/Amsterdam.** Elke tz-aware tijdstempel (`tijdstip_start` in

@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Orchestratie en CLI: bouwt alle uitvoer uit de twee ruwe zips (ontwerp-preprocessing.md).
 
 Gebruik: ``python -m dacs_hw_preprocessing --raw-dir data/raw --uit data/processed``.

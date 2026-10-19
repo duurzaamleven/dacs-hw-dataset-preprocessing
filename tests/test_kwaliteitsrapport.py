@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Tests voor `kwaliteitsrapport.py`: de zomertijdcontrole en de sleutelcontrole."""
 
 from __future__ import annotations

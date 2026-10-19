@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Schrijft ``docs/data-quality.md``: het kwaliteitsrapport dat de pijplijn zelf genereert.
 
 Deze dataset heeft geen sentinelwaarden en geen plausibiliteitsvlaggen zoals de WarmingUP- of

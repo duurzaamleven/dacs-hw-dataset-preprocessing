@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Parquet-schema's per uitvoertabel: bron van waarheid voor zowel het schrijven (``pijplijn.py``)
 als de machineleesbare beschrijving (``datapackage.py``). Zie ontwerp-preprocessing.md §2, §3.
 """

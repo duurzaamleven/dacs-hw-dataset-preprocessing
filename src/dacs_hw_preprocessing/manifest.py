@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Hervatbaarheid: ``_manifest.jsonl``, atomisch schrijven, en de contractversie.
 
 **Zelfde patroon als de WarmingUP- en IM3-preprocessingrepo's, geschaald naar een kleine set**

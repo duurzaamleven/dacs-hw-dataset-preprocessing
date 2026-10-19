@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Tests voor de aanvoer/retour-toets (ontwerp-preprocessing.md §5)."""
 
 from __future__ import annotations

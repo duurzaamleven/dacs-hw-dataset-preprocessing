@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Kolomvertaling (ontwerp-preprocessing.md §3).
 
 Conform `physiquant__unit`: eenheid na de dubbele underscore. Omdat de bron aggregaten levert,

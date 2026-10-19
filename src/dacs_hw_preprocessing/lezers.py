@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Inleesstap: zes CSV's uit twee ZIP-archieven naar getypeerde ``pandas.DataFrame``'s.
 
 Implementeert de kolomvertaling (ontwerp-preprocessing.md §3) en de kwartierverschuiving van de

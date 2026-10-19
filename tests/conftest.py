@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: EUPL-1.2
 """Gedeelde testfixtures: kleine, zelfgebouwde ZIP's met exact de kolomnamen van de echte bron
 (geverifieerd tegen `dataset-dacs-hw.zip`/`wijktrafo_15min.zip` op 17-09-2026), gevuld met
 synthetische data. Geen netwerk, geen afhankelijkheid van de echte DACS-HW-data."""
