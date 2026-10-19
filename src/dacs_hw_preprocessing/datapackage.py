@@ -246,7 +246,7 @@ def bouw_datapackage(contract_versie: str = UITVOER_CONTRACT_VERSIE) -> dict:
         "contributors": [
             {"title": "Projectgroep DACS-HW (Inversable, Voorstroom, Samen Energie Neutraal, Enablemi, Intergas, TU/e)", "role": "author"},
             {"title": "Enexis", "role": "author", "organization": "Enexis"},
-            {"title": "Milieu Centraal", "role": "processor"},
+            {"title": "Kenniscentrum Duurzaam Leven", "role": "processor"},
         ],
         "resources": resources,
     }

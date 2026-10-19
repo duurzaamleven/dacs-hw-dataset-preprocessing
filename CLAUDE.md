@@ -22,8 +22,8 @@ pytest -q
    (`temp_aanvoer_gem__degC`). `_cum` betekent een meterstand op een moment; zonder `_cum` is het
    een gemiddelde over het interval. Conventie: <https://github.com/energietransitie/physiquant__unit>.
 3. **Deze repo staat op zichzelf.** Hij kan gedeeld of publiek worden en moet bruikbaar zijn voor
-   iedereen die met deze dataset werkt. Verwijs dus **niet** naar de afnemende repo van Milieu
-   Centraal, niet bij naam en niet met een link; schrijf "de afnemende repo" of "de afnemende
+   iedereen die met deze dataset werkt. Verwijs dus **niet** naar de afnemende repo van Kenniscentrum Duurzaam
+   Leven, niet bij naam en niet met een link; schrijf "de afnemende repo" of "de afnemende
    simulatie".
 4. **De ruwe data blijft buiten git.** `data/` is gitignored. De dataset heeft een meldplicht; zie
    [`GEBRUIKSVOORWAARDEN.md`](GEBRUIKSVOORWAARDEN.md) vóór je iets publiceert of deelt.

@@ -1,11 +1,11 @@
 LICENTIE VAN DE CODE: BESLUIT NOG TE NEMEN
 
-© 2026 Stichting Milieu Centraal.
+Copyright © 2026 Kenniscentrum Duurzaam Leven, Stichting Milieu Centraal
 
-Milieu Centraal heeft nog niet besloten onder welke licentie de code in deze
+Kenniscentrum Duurzaam Leven heeft nog niet besloten onder welke licentie de code in deze
 repository gedeeld wordt. Zolang dat besluit niet genomen is, is er geen licentie
 verleend: de code mag niet worden gebruikt, gekopieerd, gewijzigd, gepubliceerd of
-verspreid zonder voorafgaande schriftelijke toestemming van Milieu Centraal.
+verspreid zonder voorafgaande schriftelijke toestemming van Kenniscentrum Duurzaam Leven.
 
 LET OP: vóór publicatie moet dit besluit genomen zijn.
 
@@ -33,7 +33,7 @@ ophaalt.
 De werkbare invulling is dezelfde als bij de zusterrepo's voor de Installatiemonitor,
 het Demoproject Hybride en WarmingUP: de CODE onder een gangbare open-source-licentie,
 de INZICHTEN EN RESULTATEN onder de voorwaarden van de datasets. Dit is geen keuze
-die in deze repository gemaakt kan worden. Milieu Centraal kiest de licentie, en die
+die in deze repository gemaakt kan worden. Kenniscentrum Duurzaam Leven kiest de licentie, en die
 keuze wordt hier vastgelegd voordat de repository of een conclusie gepubliceerd
 wordt.
 
